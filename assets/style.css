@@ -1,0 +1,177 @@
+/* ==========================================
+   RESET BÁSICO
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* ==========================================
+   REQUERIMIENTO 1: Layout General con CSS Grid
+   ========================================== */
+.ecommerce-container {
+  display: grid;
+  min-height: 100vh;
+  /* Definimos columnas: el sidebar mide 240px y el resto se expande */
+  grid-template-columns: 240px 1fr;
+  /* Definimos filas: alto del navbar, contenido auto-ajustable, alto del footer */
+  grid-template-rows: 60px 1fr 50px;
+  
+  /* El mapa del sitio exacto según la imagen guía del profesor */
+  grid-template-areas: 
+    "navbar navbar"
+    "sidebar grilla"
+    "footer footer";
+  
+  gap: 15px;
+  padding: 10px;
+}
+
+/* Asignación de áreas a las etiquetas HTML */
+.navbar {
+  grid-area: navbar;
+  background-color: #2c5282; /* Azul corporativo de la foto */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar h1 {
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #e2e8f0; /* Gris sutil de fondo */
+  padding: 20px;
+}
+
+.products-grid {
+  grid-area: grilla;
+  background-color: #e2e8f0;
+  padding: 20px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #718096;
+  font-size: 0.85rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ==========================================
+   REQUERIMIENTO 3: Flexbox en la Barra Lateral
+   ========================================== */
+.sidebar {
+  display: flex;
+  flex-direction: column; /* Orientación: Vertical */
+  gap: 15px;
+}
+
+.sidebar h2 {
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+.categories-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* Lista de categorías en vertical */
+  gap: 10px;
+}
+
+.categories-list li {
+  font-size: 0.9rem;
+  color: #4a5568;
+  cursor: pointer;
+}
+
+.categories-list li span {
+  color: #a0aec0; /* Gris con menos opacidad para los números */
+}
+
+/* ==========================================
+   REQUERIMIENTO 2: Grilla de Productos con CSS Grid
+   ========================================== */
+.products-grid {
+  display: grid;
+  /* Grilla dinámica que crea columnas de mínimo 250px según el espacio */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  align-content: start;
+}
+
+/* ==========================================
+   REQUERIMIENTO 4: Tarjetas de Producto con Flexbox
+   ========================================== */
+.product-card {
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  
+  /* Activamos Flexbox orientado verticalmente */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuye img, textos y botón de forma equilibrada */
+  align-items: center;
+  text-align: center;
+}
+
+.product-img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain; /* Mantiene la proporción de la foto sin deformar */
+  padding: 15px;
+  background-color: #fff;
+}
+
+/* Contenedor interno para los textos (También Flex Vertical) */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px;
+  width: 100%;
+}
+
+.product-info h3 {
+  font-size: 1.1rem;
+  color: #2d3748;
+  font-weight: normal;
+}
+
+.product-info .price {
+  font-size: 0.95rem;
+  color: #718096;
+}
+
+/* Botón inferior */
+.btn-buy {
+  width: 100%;
+  background-color: #2c5282;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-buy:hover {
+  background-color: #2b6cb0;
+}
